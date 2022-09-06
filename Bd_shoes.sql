@@ -50,7 +50,7 @@ CREATE TABLE listCommandes (
   FOREIGN KEY (id_commande) REFERENCES commandes(id_commande)
 ) ENGINE=Innodb DEFAULT CHARSET=utf8;
 
-INSERT INTO `marques` (`id_marque`,`nom_de_la_marque`, `logo`)
+INSERT INTO `marque` (`id_marque`,`nom_de_la_marque`, `logo`)
 VALUES
 (NULL, 'NIKE', 'Nike-Logo'),
 (NULL, 'PUMA', 'Puma-Logo.png'),
