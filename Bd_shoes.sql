@@ -17,7 +17,16 @@ CREATE TABLE clients(
     PRIMARY KEY (ClientID)
 )ENGINE=Innodb DEFAULT CHARSET=utf8;
 
-CREATE TABLE marques (
+CREATE TABLE commandes(
+  id_commande int(9) NOT NULL AUTO_INCREMENT,
+  ClientID int(9) NOT NULL,
+  date varchar(10) NOT NULL,
+  PRIMARY KEY (id_commande),
+  FOREIGN KEY (ClientID) REFERENCES clients(ClientID)
+) ENGINE=Innodb DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE marque (
     id_marque INTEGER NOT NULL AUTO_INCREMENT,
     nom_de_la_marque VARCHAR (100),
     logo VARCHAR (100),
@@ -31,7 +40,14 @@ CREATE TABLE chaussures (
     taille VARCHAR (100),
     prix VARCHAR (100),
     PRIMARY KEY (id_chaussures),
-    FOREIGN KEY (`id_marque`) REFERENCES marques(`id_marque`)
+    FOREIGN KEY (id_marque) REFERENCES marque(id_marque)
+) ENGINE=Innodb DEFAULT CHARSET=utf8;
+
+CREATE TABLE listCommandes (
+  id_commande int(9) NOT NULL,
+  id_chaussures int(9) NOT NULL,
+  quantité int(3) NOT NULL,
+  FOREIGN KEY (id_commande) REFERENCES commandes(id_commande)
 ) ENGINE=Innodb DEFAULT CHARSET=utf8;
 
 INSERT INTO `marques` (`id_marque`,`nom_de_la_marque`, `logo`)
